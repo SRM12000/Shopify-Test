@@ -75,53 +75,10 @@
         "padding_top": 44,
         "padding_bottom": 36
       }
-    },
-    "faq_48KdzC": {
-      "type": "faq",
-      "blocks": {
-        "faq_item_Kfhzhn": {
-          "type": "faq_item",
-          "settings": {
-            "question": "What is your question?",
-            "answer": "<p>Your answer goes here.</p>"
-          }
-        },
-        "faq_item_cXRTzF": {
-          "type": "faq_item",
-          "settings": {
-            "question": "What is your question?",
-            "answer": "<p>Your answer goes here.</p>"
-          }
-        },
-        "faq_item_e3PfhE": {
-          "type": "faq_item",
-          "settings": {
-            "question": "What is your questionxwexwexwexwe",
-            "answer": "<p>Your answer goes here.xexexwx</p>"
-          }
-        }
-      },
-      "block_order": [
-        "faq_item_Kfhzhn",
-        "faq_item_cXRTzF",
-        "faq_item_e3PfhE"
-      ],
-      "settings": {
-        "title": "Frequently Asked Questions",
-        "title_color": "#000000",
-        "title_size": 32,
-        "title_alignment": "center",
-        "question_color": "#333333",
-        "question_size": 18,
-        "answer_color": "#666666",
-        "answer_size": 16,
-        "add_spacing": true
-      }
     }
   },
   "order": [
     "image_banner",
-    "featured_collection",
-    "faq_48KdzC"
+    "featured_collection"
   ]
 }
