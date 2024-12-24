@@ -214,17 +214,26 @@ document.addEventListener('DOMContentLoaded', function() {
   
   faqQuestions.forEach(question => {
     question.addEventListener('click', () => {
-      const wasActive = question.classList.contains('active');
+      // Toggle active class on the clicked question
+      question.classList.toggle('active');
       
-      // Close all questions
-      faqQuestions.forEach(q => {
-        q.classList.remove('active');
-      });
+      // Get the answer element
+      const answer = question.nextElementSibling;
       
-      // If the clicked question wasn't active, open it
-      if (!wasActive) {
-        question.classList.add('active');
+      // Toggle the answer visibility with a smooth transition
+      if (question.classList.contains('active')) {
+        answer.style.display = 'block';
+      } else {
+        answer.style.display = 'none';
       }
+      
+      // Close other questions
+      faqQuestions.forEach(otherQuestion => {
+        if (otherQuestion !== question) {
+          otherQuestion.classList.remove('active');
+          otherQuestion.nextElementSibling.style.display = 'none';
+        }
+      });
     });
   });
 });
