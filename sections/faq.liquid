@@ -1,0 +1,231 @@
+<div class="faq-section page-width{% if section.settings.add_spacing %} section-spacing{% endif %}">
+  {% if section.settings.title != blank %}
+    <h2 class="faq-title" style="
+      color: {{ section.settings.title_color }};
+      font-size: {{ section.settings.title_size }}px;
+      text-align: {{ section.settings.title_alignment }};">
+      {{ section.settings.title }}
+    </h2>
+  {% endif %}
+
+  <div class="faq-container">
+    {% for block in section.blocks limit: 5 %}
+      {% case block.type %}
+        {% when 'faq_item' %}
+          <div class="faq-item" {{ block.shopify_attributes }}>
+            <button class="faq-question" style="
+              color: {{ section.settings.question_color }};
+              font-size: {{ section.settings.question_size }}px;">
+              {{ block.settings.question }}
+              <span class="icon-plus">+</span>
+            </button>
+            <div class="faq-answer" style="
+              color: {{ section.settings.answer_color }};
+              font-size: {{ section.settings.answer_size }}px;">
+              {{ block.settings.answer }}
+            </div>
+          </div>
+      {% endcase %}
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "FAQ Section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Frequently Asked Questions"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title Color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "title_size",
+      "min": 16,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "label": "Title Font Size",
+      "default": 32
+    },
+    {
+      "type": "select",
+      "id": "title_alignment",
+      "label": "Title Alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "color",
+      "id": "question_color",
+      "label": "Question Color",
+      "default": "#333333"
+    },
+    {
+      "type": "range",
+      "id": "question_size",
+      "min": 14,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "label": "Question Font Size",
+      "default": 18
+    },
+    {
+      "type": "color",
+      "id": "answer_color",
+      "label": "Answer Color",
+      "default": "#666666"
+    },
+    {
+      "type": "range",
+      "id": "answer_size",
+      "min": 12,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "label": "Answer Font Size",
+      "default": 16
+    },
+    {
+      "type": "checkbox",
+      "id": "add_spacing",
+      "label": "Add section spacing",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq_item",
+      "name": "FAQ Item",
+      "limit": 5,
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "What is your question?"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer",
+          "default": "<p>Your answer goes here.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ Section",
+      "blocks": [
+        {
+          "type": "faq_item"
+        },
+        {
+          "type": "faq_item"
+        },
+        {
+          "type": "faq_item"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+.faq-section {
+  margin: 0 auto;
+}
+
+.section-spacing {
+  padding: 60px 0;
+}
+
+.faq-container {
+  margin-top: 30px;
+}
+
+.faq-item {
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 10px;
+}
+
+.faq-question {
+  width: 100%;
+  text-align: left;
+  padding: 15px 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.faq-question:hover {
+  opacity: 0.8;
+}
+
+.faq-answer {
+  display: none;
+  padding: 0 0 15px;
+}
+
+.icon-plus {
+  font-size: 20px;
+  transition: transform 0.3s ease;
+}
+
+.faq-question.active .icon-plus {
+  transform: rotate(45deg);
+}
+
+.faq-question.active + .faq-answer {
+  display: block;
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const faqQuestions = document.querySelectorAll('.faq-question');
+  
+  faqQuestions.forEach(question => {
+    question.addEventListener('click', () => {
+      const wasActive = question.classList.contains('active');
+      
+      // Close all questions
+      faqQuestions.forEach(q => {
+        q.classList.remove('active');
+      });
+      
+      // If the clicked question wasn't active, open it
+      if (!wasActive) {
+        question.classList.add('active');
+      }
+    });
+  });
+});
+</script> 
