@@ -112,10 +112,10 @@
         "title_size": 32,
         "title_alignment": "center",
         "question_color": "#333333",
-        "question_size": 18,
+        "question_size": 23,
         "answer_color": "#666666",
-        "answer_size": 16,
-        "add_spacing": true
+        "answer_size": 27,
+        "add_spacing": false
       }
     }
   },
