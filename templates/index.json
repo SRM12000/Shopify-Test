@@ -108,13 +108,13 @@
       ],
       "settings": {
         "title": "Frequently Asked Questions",
-        "title_color": "#000000",
+        "title_color": "#2694df",
         "title_size": 32,
         "title_alignment": "center",
         "question_color": "#333333",
-        "question_size": 23,
+        "question_size": 28,
         "answer_color": "#666666",
-        "answer_size": 27,
+        "answer_size": 20,
         "add_spacing": false
       }
     }
